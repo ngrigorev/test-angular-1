@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Create Client</h2>
+
+<mat-dialog-content class="mat-typography">
+  <h3>Enter password to confirm</h3>
+
+  <mat-form-field class="form-field" appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" [(ngModel)]="value">
+    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="value" cdkFocusInitial>Create</button>
+  <button mat-button [mat-dialog-close]="">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Search Clients</h2>
+
+<mat-dialog-content class="mat-typography">
+  <h3>Search clients by phone or fio</h3>
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Phone or FIO</mat-label>
+      <input matInput [formControl]="filteredInput" appearance="fill" [matAutocomplete]="auto">
+      <button *ngIf="filteredInput.value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="display" (optionSelected)="select($event.option)">
+        <mat-option *ngFor="let client of filteredClients" [value]="client">
+          <div class="block">
+            <span>FIO</span>
+            {{client.fio}}
+          </div>
+          <div class="block">
+            <span>Phone</span>
+            {{client.phone}}
+          </div>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="client?.id" cdkFocusInitial>Link</button>
+  <button mat-button [mat-dialog-close]="null">Cancel</button>
+</mat-dialog-actions>

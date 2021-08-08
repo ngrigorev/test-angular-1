@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <mat-card *ngFor="let item of orders" class="card">
+    <mat-card-header>
+      <mat-card-title>Order #{{item.id}}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="block">
+        <span>Last name</span>
+        {{item?.customer?.last_name}}
+      </div>
+      <div class="block">
+        <span>First name</span>
+        {{item?.customer?.first_name}}
+      </div>
+      <div class="block">
+        <span>Third name</span>
+        {{item?.customer?.third_name}}
+      </div>
+      <div class="block">
+        <span>Phone</span>
+        {{item?.customer?.phone}}
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <a mat-raised-button routerLink="/order/{{item.id}}">
+        Open
+        <mat-icon aria-hidden=" false" aria-label="go to order">open_in_new</mat-icon>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>
